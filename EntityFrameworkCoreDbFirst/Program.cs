@@ -8,6 +8,20 @@ namespace EntityFrameworkCoreDbFirst {
     class Program {
         static void Main(string[] args) {
 
+            var ordCtrl = new OrdersController();
+
+            var order = new Order() {
+                Id = 0, CustomerId = 1, Date = new DateTime(2021, 7, 9), Description = "Order 1"
+            };
+            var rc = ordCtrl.Add(order);
+            rc.Description = "Order 1a";
+            var rc1 = ordCtrl.Update(order);
+            var rc2 = ordCtrl.GetAll();
+            var rc3 = ordCtrl.GetById(1);
+            var rc4 = ordCtrl.Delete(rc3.Id);
+        }
+        static void TestCustomer() { 
+
             var custCtrl = new CustomersController();
 
             var newCust = new Customer() {
